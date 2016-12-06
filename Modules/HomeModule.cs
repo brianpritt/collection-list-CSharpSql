@@ -1,8 +1,8 @@
 using Nancy;
 using System.Collections.Generic;
-using NameSpace.Objects;
+using Inventory.Objects;
 
-namespace NameSpace
+namespace Inventory
 {
 	public class HomeModule : NancyModule
 	{
@@ -10,7 +10,14 @@ namespace NameSpace
 		{
 			Get["/"] = _ =>
 			{
-				return View["index.cshtml"];
+				List<Collection> allCollections = Collection.GetAll();
+				return View["index.cshtml", allCollections];
+			};
+			Post["/add"] = _ =>{
+				Collection newCollection = new Collection (Request.Form["item"]);
+				newCollection.Save();
+				List<Collection> allCollections = Collection.GetAll();
+				return View["index.cshtml", allCollections];
 			};
 		}
 	}

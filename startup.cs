@@ -5,8 +5,12 @@ using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
 
-namespace NameSpace
+namespace Inventory
 {
+  public class DBConfiguration
+  {
+    public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=inventory; Integrated Security=SSPI";
+  }
   public class Startup
   {
     public void Configure(IApplicationBuilder app)

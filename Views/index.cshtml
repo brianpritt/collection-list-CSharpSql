@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="/Content/css/styles.css">
-		<title>New Project</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Obsolidia</h1>
+    </div>
+      <h2>My obsolete peripherals.</h2><br>
+        <form action="/add" method="post">
+					<input type="text" name="item" placeholder="Enter your obsolete item:">
+          <button type="submit">SUBMIT</button>
+        </form>
+				@if (Model.Count > 0)
+				{
+					foreach (var listItem in Model)
+					{
+						<h3>@listItem.GetName()</h3>
+					}
+				}
+      <h5><a href="/delete">Clear List</a></h5><br>
+    </div>
